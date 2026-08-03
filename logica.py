@@ -16,7 +16,7 @@ def avanzar(camion, steps):
     camion.espacio_derecha = " " * camion.pos_derecha
     camion.espacio_izquierda = " " * camion.pos_izquierda
 
-def resultado_final(camion_uno, camion_dos, usr_selection):
+def resultado_final(camion_uno, camion_dos, favoritos):
     """Establece el camión ganador y comparte los resultados"""
     camion_ganador = ""
     if camion_uno.pos_derecha < camion_dos.pos_derecha:
@@ -29,13 +29,17 @@ def resultado_final(camion_uno, camion_dos, usr_selection):
         print("¡Los camiones EMPATARON!!!\n")
         camion_ganador = [1, 2]
 
-    if usr_selection is not None:
-        if usr_selection in camion_ganador:
-            print("¡Ganaste!!!\n")
-        else:
-            print("Perdiste :(\n")
+    favorites = favoritos
+    if favorites is not None:
+        favorites_uno = [name for name in favorites if favorites[name] == 1]
+        favorites_dos = [name for name in favorites if favorites[name] == 2]
 
-def juego_iniciado(camion_uno, camion_dos, usr_selection=None):
+        if 1 in camion_ganador:
+            print(f"Ganadores: {', '.join(favorites_uno)}!!!\n")
+        if 2 in camion_ganador:
+            print(f"Ganadores: {', '.join(favorites_dos)}!!!\n")
+
+def juego_iniciado(camion_uno, camion_dos, favoritos=None):
     """Se llama a esta función en main para comenzar el bucle del juego"""
     while True:
         # avance aleatorio entre 0 y 5 posiciones
@@ -47,7 +51,7 @@ def juego_iniciado(camion_uno, camion_dos, usr_selection=None):
 
         # limpia el resultado anterior y actualiza la posición de los camiones
         limpiar_terminal()
-        dibujar_pista(camion_uno, camion_dos, usr_selection)
+        dibujar_pista(camion_uno, camion_dos, favoritos)
 
         # resultado parcial
         if camion_uno.pos_derecha < camion_dos.pos_derecha:
@@ -64,4 +68,4 @@ def juego_iniciado(camion_uno, camion_dos, usr_selection=None):
         time.sleep(0.3)
 
     # una vez que termina el loop y hay un ganador, lo comunica
-    resultado_final(camion_uno, camion_dos, usr_selection)
+    resultado_final(camion_uno, camion_dos, favoritos)

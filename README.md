@@ -1,6 +1,6 @@
 # CARRERA DE CAMIONES - JUEGO DE AZAR
 ## VERSION ACTUAL:
-3.1.0
+3.1.1
 
 ## VERSION 3.0
 
@@ -15,7 +15,7 @@ A medida que mi creatividad lo permita, seguiré actualizando versiones con nuev
 
 ![Game menu](img/game_menu.png)
 ![Game preview: Start](img/game_preview_start.png)
-![Game preview: Process](img/game_preview_process.png)
+![Game preview: Progress](img/game_progress.png)
 ![Game preview: Finish](img/game_preview_finish.png)
 
 
@@ -37,9 +37,20 @@ main.py
 ## VERSION 3.1
 ### Seleccionar favorito
 
-Se agrega la posibilidad de que un usuario registre de antemano qué camión cree que va a ganar
-Se muestra por pantalla durante el proceso y se determina con el resultado final
+Se agrega la posibilidad de que un usuario registre de antemano qué camión cree que va a ganar.
+Se muestra por pantalla durante el proceso y se determina con el resultado final.
 
-![Game menu](img/(commit)_game_menu.png)
-![Game preview: Process](img/(commit)_game_process.png)
-![Game preview: Finish](img/(commit)_game_finish.png)
+![Game menu](img/favoritos_game_menu.png)
+![Game preview: Process](img/favoritos_game_process.png)
+![Game preview: Finish](img/favoritos_game_finish.png)
+
+## VERSION 3.1.1
+### Seleccionar múltiples favoritos
+
+Se agrega la posibilidad de determinar cuántas personas van a elegir favoritos.
+Al final, se calcula e imprime la totalidad de ganadores.
+
+![Game menu](img/multiplesfavoritos_game_menu.png)
+![Game preview: Process](img/multiplesfavoritos_game_process.png)
+![Game preview: Finish](img/multiplesfavoritos_game_finish.png)
+

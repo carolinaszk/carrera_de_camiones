@@ -67,12 +67,12 @@ def solicitar_eleccion(camion_uno, camion_dos):
     """Solicita al usuario su favorito antes de comenzar a jugar"""
     while True:
         print(
-            "\n¡Elegí tu camión favorito!\n"
+            "¡Elegí tu camión favorito!\n"
             f"1. {camion_uno.nombre}\n"
             f"2. {camion_dos.nombre}\n"
             "3. Cancelar selección."
         )
-        choice = input("Elegí tu camión favorito: ")
+        choice = input("Elección: ")
         if choice != "":
             if choice.isdigit():
                 choice = int(choice)
@@ -85,12 +85,29 @@ def solicitar_eleccion(camion_uno, camion_dos):
         else:
             print("Error: Debe ingresar un valor.")
 
+def seleccion_en_grupo(camion_uno, camion_dos):
+    """Determina cuánta gente va a loguear resultados y los solicita"""
+    favorites = {}
+    while True:
+        cantidad_selection = input("\n¿Cuántas personas elegirán favoritos?: ")
+        if cantidad_selection.isdigit():
+            cantidad_selection = int(cantidad_selection)
+            if cantidad_selection == 0:
+                break
+            for i in range(cantidad_selection):
+                print(f"\nSelección para el usuario N°{i+1}")
+                nombre = input("Ingrese su nombre: ")
+                choice = solicitar_eleccion(camion_uno, camion_dos)
+                favorites[nombre] = choice
+            return favorites
+        print("Error: Ingrese un número válido.")
+
 
 def game():
     """Conecta los archivos y ejecuta el juego"""
     limpiar_terminal()
     # inicio del menú de opciones
-    print( 
+    print(
         "¡Bienvenido al juego CARRERA DE CAMIONES!\n"
         "Para poder comenzar, necesitamos recopilar la siguiente información:\n"
         " • El tamaño de la pista.\n"
@@ -101,18 +118,20 @@ def game():
     ancho_elegido = cambiar_ancho_pista()
     camion_uno = configurar_camion(1, ancho_elegido)
     camion_dos = configurar_camion(2, ancho_elegido)
-    usr_selection = solicitar_eleccion(camion_uno, camion_dos)
+
+    # ejecuta la creación de selección de usuario
+    favoritos = seleccion_en_grupo(camion_uno, camion_dos)
 
     # muestra los cambios y comienza el juego
     limpiar_terminal()
-    dibujar_pista(camion_uno, camion_dos, usr_selection)
+    dibujar_pista(camion_uno, camion_dos, favoritos)
     print()
     for i in range(5):
         print(f"{5 - i}...")
         time.sleep(1)
 
     # corre el funcionamiento del juego desde lógica
-    juego_iniciado(camion_uno, camion_dos, usr_selection)
+    juego_iniciado(camion_uno, camion_dos, favoritos)
 
 # protege que solo se ejecute en esta ventana
 if __name__ == "__main__":

@@ -69,17 +69,22 @@ class Camion:
         self.pos_derecha = self.ancho_pista
         self.espacio_derecha = " " * self.pos_derecha
 
-def dibujar_pista(camion_uno, camion_dos, usr_selection):
+def dibujar_pista(camion_uno, camion_dos, favoritos=None):
     """Armado de la pista"""
     print("¡Carrera de CAMIONES!\n"
         "Elegí tu favorito:\n"
         f"{camion_uno.color_ascii} • {camion_uno.nombre}\n"
         f"{camion_dos.color_ascii} • {camion_dos.nombre}\n")
+    favorites = favoritos
+    if favorites is not None:
+        favorites_uno = [name for name in favorites if favorites[name] == 1]
+        favorites_dos = [name for name in favorites if favorites[name] == 2]
+  
+        print("Favoritos seleccionados:\n"
+            f"{camion_uno.color_ascii} • {camion_uno.nombre}: {', '.join(favorites_uno)}\n"
+            f"{camion_dos.color_ascii} • {camion_dos.nombre}: {', '.join(favorites_dos)}\n"
+        )
 
-    if usr_selection == 1:
-        print(f"Favorito: {camion_uno.color_ascii + camion_uno.nombre}\n")
-    if usr_selection == 2:
-        print(f"Favorito: {camion_dos.color_ascii + camion_dos.nombre}\n")
 
     for lap in range(8):
         if lap <= 3:
