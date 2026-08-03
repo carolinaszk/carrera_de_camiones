@@ -15,7 +15,7 @@ A medida que mi creatividad lo permita, seguiré actualizando versiones con nuev
 
 ![Game menu](img/game_menu.png)
 ![Game preview: Start](img/game_preview_start.png)
-![Game preview: Progress](img/game_progress.png)
+![Game preview: Process](img/game_preview_process.png)
 ![Game preview: Finish](img/game_preview_finish.png)
 
 
