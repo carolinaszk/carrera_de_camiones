@@ -40,6 +40,6 @@ main.py
 Se agrega la posibilidad de que un usuario registre de antemano qué camión cree que va a ganar
 Se muestra por pantalla durante el proceso y se determina con el resultado final
 
-![Game menu](img/(commit)_game_menu.png)
-![Game preview: Process](img/(commit)_game_process.png)
-![Game preview: Finish](img/(commit)_game_finish.png)
+![Game menu](img/favoritos_game_menu.png)
+![Game preview: Process](img/favoritos_game_process.png)
+![Game preview: Finish](img/favoritos_game_finish.png)
