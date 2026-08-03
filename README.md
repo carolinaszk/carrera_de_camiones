@@ -1,6 +1,6 @@
 # CARRERA DE CAMIONES - JUEGO DE AZAR
 ## VERSION ACTUAL:
-3.0.0
+3.1.0
 
 ## VERSION 3.0
 
@@ -23,6 +23,7 @@ A medida que mi creatividad lo permita, seguiré actualizando versiones con nuev
 
 >
 > ```sh
+> Python 3.13.7
 > python -m venv env
 > .\env\Scripts\Activate
 > pip install -r requirements.txt
@@ -32,3 +33,13 @@ A medida que mi creatividad lo permita, seguiré actualizando versiones con nuev
 ## RUN FILE
 
 main.py
+
+## VERSION 3.1
+### Seleccionar favorito
+
+Se agrega la posibilidad de que un usuario registre de antemano qué camión cree que va a ganar
+Se muestra por pantalla durante el proceso y se determina con el resultado final
+
+![Game menu](img/(commit)_game_menu.png)
+![Game preview: Process](img/(commit)_game_process.png)
+![Game preview: Finish](img/(commit)_game_finish.png)

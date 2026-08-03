@@ -69,18 +69,24 @@ class Camion:
         self.pos_derecha = self.ancho_pista
         self.espacio_derecha = " " * self.pos_derecha
 
-def dibujar_pista(camion1, camion2):
+def dibujar_pista(camion_uno, camion_dos, usr_selection):
     """Armado de la pista"""
     print("¡Carrera de CAMIONES!\n"
         "Elegí tu favorito:\n"
-        f"{camion1.color_ascii} • {camion1.nombre}\n"
-        f"{camion2.color_ascii} • {camion2.nombre}\n")
+        f"{camion_uno.color_ascii} • {camion_uno.nombre}\n"
+        f"{camion_dos.color_ascii} • {camion_dos.nombre}\n")
+
+    if usr_selection == 1:
+        print(f"Favorito: {camion_uno.color_ascii + camion_uno.nombre}\n")
+    if usr_selection == 2:
+        print(f"Favorito: {camion_dos.color_ascii + camion_dos.nombre}\n")
+
     for lap in range(8):
         if lap <= 3:
-            print(camion1.START[lap] + camion1.espacio_izquierda + camion1.dibujo_ascii[lap] + camion1.espacio_derecha + camion1.FINISH[lap])
+            print(camion_uno.START[lap] + camion_uno.espacio_izquierda + camion_uno.dibujo_ascii[lap] + camion_uno.espacio_derecha + camion_uno.FINISH[lap])
         else:
             lap_camion = lap-4
-            print(camion2.START[lap] + camion2.espacio_izquierda + camion2.dibujo_ascii[lap_camion] + camion2.espacio_derecha + camion2.FINISH[lap])
+            print(camion_dos.START[lap] + camion_dos.espacio_izquierda + camion_dos.dibujo_ascii[lap_camion] + camion_dos.espacio_derecha + camion_dos.FINISH[lap])
 
 def limpiar_terminal():
     """Vaciar todo el contenido de debugging pasado de la consola"""

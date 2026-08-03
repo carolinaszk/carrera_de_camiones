@@ -53,7 +53,7 @@ def configurar_camion(numero, ancho_pista):
 def cambiar_ancho_pista():
     """Determina el tamaño de la pista"""
     print("\nSelección del tamaño de pista.\n"
-          "Tamaño recomendado: 125-160 caracteres.\n")
+          "Tamaño recomendado: 125-160 caracteres.")
     while True:
         caracteres = input("Tamaño de la pista: ")
         if caracteres == "":
@@ -63,6 +63,27 @@ def cambiar_ancho_pista():
             return int(caracteres)
         print("Error: Debe ingresar un número entero.")
 
+def solicitar_eleccion(camion_uno, camion_dos):
+    """Solicita al usuario su favorito antes de comenzar a jugar"""
+    while True:
+        print(
+            "\n¡Elegí tu camión favorito!\n"
+            f"1. {camion_uno.nombre}\n"
+            f"2. {camion_dos.nombre}\n"
+            "3. Cancelar selección."
+        )
+        choice = input("Elegí tu camión favorito: ")
+        if choice != "":
+            if choice.isdigit():
+                choice = int(choice)
+                if choice in (1, 2):
+                    return choice
+                if choice == 3:
+                    break
+            else:
+                print("Error: Debe ingresar un número válido.")
+        else:
+            print("Error: Debe ingresar un valor.")
 
 
 def game():
@@ -80,17 +101,18 @@ def game():
     ancho_elegido = cambiar_ancho_pista()
     camion_uno = configurar_camion(1, ancho_elegido)
     camion_dos = configurar_camion(2, ancho_elegido)
+    usr_selection = solicitar_eleccion(camion_uno, camion_dos)
 
     # muestra los cambios y comienza el juego
     limpiar_terminal()
-    dibujar_pista(camion_uno, camion_dos)
+    dibujar_pista(camion_uno, camion_dos, usr_selection)
     print()
     for i in range(5):
         print(f"{5 - i}...")
         time.sleep(1)
 
     # corre el funcionamiento del juego desde lógica
-    juego_iniciado(camion_uno, camion_dos)
+    juego_iniciado(camion_uno, camion_dos, usr_selection)
 
 # protege que solo se ejecute en esta ventana
 if __name__ == "__main__":
