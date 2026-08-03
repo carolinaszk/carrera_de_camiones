@@ -53,4 +53,3 @@ Al final, se calcula e imprime la totalidad de ganadores.
 ![Game menu](img/multiplesfavoritos_game_menu.png)
 ![Game preview: Process](img/multiplesfavoritos_game_process.png)
 ![Game preview: Finish](img/multiplesfavoritos_game_finish.png)
-
