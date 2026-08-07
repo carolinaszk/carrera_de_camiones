@@ -47,16 +47,6 @@ Se muestra por pantalla durante el proceso y se determina con el resultado final
 ## VERSION 3.1.1
 ### Seleccionar múltiples favoritos
 
-Se agrega la posibilidad de determinar cuántas personas van a elegir favoritos.
-Al final, se calcula e imprime la totalidad de ganadores.
-
-![Game menu](img/multiplesfavoritos_game_menu.png)
-![Game preview: Process](img/multiplesfavoritos_game_process.png)
-![Game preview: Finish](img/multiplesfavoritos_game_finish.png)
-
-## VERSION 3.1.1
-### Seleccionar múltiples favoritos
-
 Se agrega la posibilidad de determinar cuántas personas van a elegir favoritos
 Al final, se calcula e imprime la totalidad de ganadores
 
