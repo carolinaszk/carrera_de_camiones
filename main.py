@@ -64,7 +64,7 @@ def cambiar_ancho_pista():
         print("Error: Debe ingresar un número entero.")
 
 def solicitar_eleccion(camion_uno, camion_dos):
-    """Solicita al usuario su favorito antes de comenzar a jugar"""
+    """Solicita al usuario su favorito"""
     while True:
         print(
             "¡Elegí tu camión favorito!\n"
@@ -72,14 +72,15 @@ def solicitar_eleccion(camion_uno, camion_dos):
             f"2. {camion_dos.nombre}\n"
             "3. Cancelar selección."
         )
-        choice = input("Elección: ")
-        if choice != "":
-            if choice.isdigit():
-                choice = int(choice)
-                if choice in (1, 2):
-                    return choice
-                if choice == 3:
-                    break
+
+        opcion = input("Elección: ")
+        if opcion != "":
+            if opcion.isdigit():
+                opcion = int(opcion)
+                if opcion in (1, 2):
+                    return opcion
+                if opcion == 3:
+                    return 0
             else:
                 print("Error: Debe ingresar un número válido.")
         else:
@@ -87,19 +88,21 @@ def solicitar_eleccion(camion_uno, camion_dos):
 
 def seleccion_en_grupo(camion_uno, camion_dos):
     """Determina cuánta gente va a loguear resultados y los solicita"""
-    favorites = {}
+    favoritos = []
     while True:
-        cantidad_selection = input("\n¿Cuántas personas elegirán favoritos?: ")
-        if cantidad_selection.isdigit():
-            cantidad_selection = int(cantidad_selection)
-            if cantidad_selection == 0:
-                break
-            for i in range(cantidad_selection):
-                print(f"\nSelección para el usuario N°{i+1}")
+        cantidad_seleccion = input("\n¿Cuántas personas elegirán favoritos?: ")
+        if cantidad_seleccion.isdigit():
+            cantidad_seleccion = int(cantidad_seleccion)
+            if cantidad_seleccion == 0:
+                return None
+            for i in range(cantidad_seleccion):
+                print(f"\nRegistro del jugador N°{i+1}")
+                username = input("Ingrese su nombre de usuario: ")
                 nombre = input("Ingrese su nombre: ")
-                choice = solicitar_eleccion(camion_uno, camion_dos)
-                favorites[nombre] = choice
-            return favorites
+                opcion = solicitar_eleccion(camion_uno, camion_dos)
+                player_lap = {"username": username, "nombre": nombre, "opcion": opcion}
+                favoritos.append(player_lap)
+            return favoritos
         print("Error: Ingrese un número válido.")
 
 

@@ -53,3 +53,24 @@ Al final, se calcula e imprime la totalidad de ganadores.
 ![Game menu](img/multiplesfavoritos_game_menu.png)
 ![Game preview: Process](img/multiplesfavoritos_game_process.png)
 ![Game preview: Finish](img/multiplesfavoritos_game_finish.png)
+
+## VERSION 3.1.1
+### Seleccionar múltiples favoritos
+
+Se agrega la posibilidad de determinar cuántas personas van a elegir favoritos
+Al final, se calcula e imprime la totalidad de ganadores
+
+![Game menu](img/multiplesfavoritos_game_menu.png)
+![Game preview: Process](img/multiplesfavoritos_game_process.png)
+![Game preview: Finish](img/multiplesfavoritos_game_finish.png)
+
+
+## VERSION 3.2
+### Guardar resultados y calcular TOP 3
+
+Se agrega la funcionalidad que guarda en un .csv los favoritos registrados
+Al final, calcula del csv el TOP 3 con los mayores aciertos y lo imprime por pantalla
+
+![Game menu](img/guardacsv_game_menu.png)
+![Game preview: Process](img/guardacsv_game_process.png)
+![Game preview: Finish](img/guardacsv_game_finish.png)

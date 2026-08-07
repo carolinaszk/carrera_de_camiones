@@ -38,7 +38,7 @@ class Camion:
         self.color_ascii = Style.BRIGHT + color
         reset = Style.RESET_ALL
 
-        # ancho total disponible para el movimiento de los camiones
+        # ancho total disponible para el movimiento de los camiones sin start y finish
         self.ancho_pista = ancho_pista
 
         # centrado del nombre del camion
@@ -53,8 +53,12 @@ class Camion:
         # armado del dibujo ASCII
         camion_uno = " ______________         "
         camion_dos = "|__|__|__|__|__|______  "
-        camion_tres = "|" + (" " * self.espacios_left) + reset + self.nombre.upper() + self.color_ascii + (" " * self.espacios_right) + "|)"
-        camion_cuatro = "'~~~~" + reset + "@" + self.color_ascii + ("~" * 11) + reset + "@" + self.color_ascii + "~~~~' "
+        camion_tres = ("|" + (" " * self.espacios_left) + reset +
+                       self.nombre.upper() + self.color_ascii +
+                       (" " * self.espacios_right) + "|)")
+        camion_cuatro = ("'~~~~" + reset + "@" + self.color_ascii +
+                         ("~" * 11) + reset + "@" +
+                         self.color_ascii + "~~~~' ")
 
         self.dibujo_ascii = [
             (self.color_ascii + camion_uno),
@@ -69,29 +73,45 @@ class Camion:
         self.pos_derecha = self.ancho_pista
         self.espacio_derecha = " " * self.pos_derecha
 
-def dibujar_pista(camion_uno, camion_dos, favoritos=None):
+def dibujar_pista(camion_uno, camion_dos, elecciones=None):
     """Armado de la pista"""
     print("¡Carrera de CAMIONES!\n"
         "Elegí tu favorito:\n"
         f"{camion_uno.color_ascii} • {camion_uno.nombre}\n"
         f"{camion_dos.color_ascii} • {camion_dos.nombre}\n")
-    favorites = favoritos
-    if favorites is not None:
-        favorites_uno = [name for name in favorites if favorites[name] == 1]
-        favorites_dos = [name for name in favorites if favorites[name] == 2]
-  
+    jugadores_elecciones = elecciones
+    jugadores_uno = []
+    jugadores_dos = []
+
+    # si hay favoritos los muestra por pantalla
+    if jugadores_elecciones:
+        for player in jugadores_elecciones:
+            if player["opcion"] == 1:
+                jugadores_uno.append(player["nombre"])
+            elif player["opcion"] == 2:
+                jugadores_dos.append(player["nombre"])
+
         print("Favoritos seleccionados:\n"
-            f"{camion_uno.color_ascii} • {camion_uno.nombre}: {', '.join(favorites_uno)}\n"
-            f"{camion_dos.color_ascii} • {camion_dos.nombre}: {', '.join(favorites_dos)}\n"
+            f"{camion_uno.color_ascii} • {camion_uno.nombre}: {', '.join(jugadores_uno)}\n"
+            f"{camion_dos.color_ascii} • {camion_dos.nombre}: {', '.join(jugadores_dos)}\n"
         )
 
 
     for lap in range(8):
         if lap <= 3:
-            print(camion_uno.START[lap] + camion_uno.espacio_izquierda + camion_uno.dibujo_ascii[lap] + camion_uno.espacio_derecha + camion_uno.FINISH[lap])
+            print(
+                camion_uno.START[lap] +
+                camion_uno.espacio_izquierda +
+                camion_uno.dibujo_ascii[lap] +
+                camion_uno.espacio_derecha +
+                camion_uno.FINISH[lap])
         else:
             lap_camion = lap-4
-            print(camion_dos.START[lap] + camion_dos.espacio_izquierda + camion_dos.dibujo_ascii[lap_camion] + camion_dos.espacio_derecha + camion_dos.FINISH[lap])
+            print(camion_dos.START[lap] +
+                  camion_dos.espacio_izquierda +
+                  camion_dos.dibujo_ascii[lap_camion] +
+                  camion_dos.espacio_derecha +
+                  camion_dos.FINISH[lap])
 
 def limpiar_terminal():
     """Vaciar todo el contenido de debugging pasado de la consola"""

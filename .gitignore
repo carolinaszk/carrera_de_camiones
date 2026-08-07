@@ -1,16 +1,19 @@
 Ini, TOML
 
-# Byte-compiled / optimized / DLL files
+# Archivos compilados
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Environments (Si usás entornos virtuales, que es lo ideal)
+# Entornos virtuales
 .venv/
 venv/
 ENV/
 env/
 
-# Operating System Files
+# Archivos del sistema operativo
 .DS_Store
 Thumbs.db
+
+# Archivos CSV de resultados del juego locales
+*.csv
